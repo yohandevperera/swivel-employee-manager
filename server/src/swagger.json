@@ -10,6 +10,168 @@
   "schemes": ["http"],
   "produces": ["application/json"],
   "consumes": ["application/json"],
-  "definitions": {},
-  "paths": {}
+  "definitions": {
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["M", "F"]
+        },
+        "photo": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/employees": {
+      "get": {
+        "summary": "Get all employees",
+        "description": "Get all db inserted employees",
+        "tags": ["Employee API"],
+        "responses": {
+          "200": {
+            "description": "Employees successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "404": {
+            "description": "Error no employees to retrieved"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create employee",
+        "description": "Creates a new employee",
+        "tags": ["Employee API"],
+        "parameters": [
+          {
+            "name": "employee",
+            "in": "body",
+            "required": true,
+            "description": "employee object",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee created successfully",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "API validation errors"
+          },
+          "404": {
+            "description": "Error creating employee"
+          },
+          "422": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/employees/{id}": {
+      "put": {
+        "summary": "Update employee",
+        "description": "Updates an existing employee for a given id",
+        "tags": ["Employee API"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "employee id",
+            "type": "integer"
+          },
+          {
+            "name": "employee",
+            "in": "body",
+            "required": true,
+            "description": "employee object",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee updated successfully",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "API validation errors"
+          },
+          "404": {
+            "description": "Error updating employee"
+          },
+          "422": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete employee",
+        "description": "Deletes an existing employee for a given id",
+        "tags": ["Employee API"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "employee id",
+            "type": "integer"
+          },
+          {
+            "name": "employee",
+            "in": "body",
+            "required": true,
+            "description": "employee object",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "API validation errors"
+          },
+          "404": {
+            "description": "Error deleted employee"
+          },
+          "422": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  }
 }
