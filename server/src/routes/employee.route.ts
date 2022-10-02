@@ -11,10 +11,10 @@ router.post(
   EmployeeController.createEmployee
 );
 router.put(
-  "/employees:id/",
+  "/employees/:id",
   employeeCreateAndUpdateRules,
   EmployeeController.updateEmployee
 );
-router.delete("/employees:id/", EmployeeController.deleteEmployee);
+router.delete("/employees/:id", EmployeeController.deleteEmployee);
 
 export default router;
