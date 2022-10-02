@@ -10,6 +10,8 @@ if (!globalThis.__db) {
   globalThis.__db = new PrismaClient();
 }
 
+
+
 db = globalThis.__db;
 
 export { db };

@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Employee {
+model Employee  {
   id        Int      @id @default(autoincrement())
   firstname String
   lastname  String
@@ -18,8 +18,8 @@ model Employee {
   phone     String
   gender    Gender
   photo     String   @db.Text
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
 }
 
 enum Gender {
