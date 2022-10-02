@@ -1,6 +1,4 @@
 import { Router } from "express";
-import UserRoutes from "../routes/user.route";
+import EmployeeRoutes from "../routes/employee.route";
 
-export default Router()
-                    .use(UserRoutes)
-                    
+export default Router().use(EmployeeRoutes);
